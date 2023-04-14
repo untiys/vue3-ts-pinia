@@ -3,20 +3,6 @@
     <div class="pie1-item" v-for="item in pieNames" :key="item">
       <component :is="item"></component>
     </div>
-    <!-- 换肤小案例 -->
-    <!-- <div>
-      <div>点击换肤</div>
-      <el-button color="pink" @click="handleClickColor('默认')"
-        >默认样式粉色</el-button
-      >
-      <el-button type="success" @click="handleClickColor('绿色')"
-        >绿色</el-button
-      >
-      <el-button type="danger" @click="handleClickColor('红色')"
-        >红色</el-button
-      >
-      <div class="text-alternate">样式换肤</div>
-    </div> -->
   </div>
 </template>
 
@@ -32,22 +18,7 @@ export default defineComponent({
   setup() {
     const pieNames = ref(["Bar1", "Bar2", "Bar3", "Bar4"])
 
-    const handleClickColor = (name) => {
-      var eleLinks = document.querySelectorAll("link[title]")
-      eleLinks.forEach((link) => {
-        const link1 = link as HTMLElement
-        if (link1.title == name) {
-          link1.disabled = false
-        } else {
-          link1.disabled = true
-        }
-      })
-    }
-    onMounted(() => {
-      handleClickColor("默认")
-    })
-
-    return { pieNames, handleClickColor }
+    return { pieNames }
   },
 })
 </script>
