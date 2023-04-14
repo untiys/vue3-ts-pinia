@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url("iconfont.ttf?t=1666696864113") format("truetype");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-caidanshouqi:before {
+  content: "\e6d3";
+}
+
+.icon-caidanzhankai:before {
+  content: "\e6d4";
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link
+      rel="stylesheet"
+      href="./src/assets/css-alternate/pink.css"
+      title="默认"
+    />
+    <link
+      rel="stylesheet alternate"
+      href="./src/assets/css-alternate/red.css"
+      title="红色"
+    />
+    <link
+      rel="stylesheet alternate"
+      href="./src/assets/css-alternate/green.css"
+      title="绿色"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- 加载入口文件 -->
+    <script type="module" src="/src/main.ts"></script>
+    <!-- 引入百度地图api -->
+    <script src="https://api.map.baidu.com/api?type=webgl&v=2.0&ak=7NuGK86iDGHztMWASjYerVe1nKZQjgYa"></script>
+    <!-- 引入高德地图api -->
+    <script type="text/javascript">
+      window._AMapSecurityConfig = {
+        securityJsCode: "7dd669e7cc2432ce92fee8e5f071ffae",
+      }
+    </script>
+    <script src="https://webapi.amap.com/maps?v=2.0&key=70722c7a53d88fc12514586a44ae6520"></script>
+  </body>
+</html>
