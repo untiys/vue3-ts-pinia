@@ -16,6 +16,6 @@
     "@/*":["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/router/routes.js", "src/router/routes.js", "src/router/routesComponents.js", "src/router/index.js", "src/router/index.js"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/router/routes.js", "src/router/routes.js", "src/router/routesComponents.js"],
   "exclude": ["src/axios/request.js"]
 }

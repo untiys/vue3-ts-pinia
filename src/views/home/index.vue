@@ -2,7 +2,9 @@
   <div class="home">
     <!-- 换肤小案例 -->
     <div>
-      <div style="margin: 10px 0px; font-size: 14px">换肤小案例：点击换肤</div>
+      <div style="margin: 10px 0px; font-size: 14px">
+        换肤小案例(写在全局可以整项目换色，在此只是本页面换色)：点击换肤
+      </div>
       <el-button color="pink" @click="handleClickColor('默认')"
         >默认样式粉色</el-button
       >
