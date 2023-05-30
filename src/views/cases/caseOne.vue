@@ -12,7 +12,7 @@
               style="display: flex; flex-wrap: wrap"
             >
               <li
-                v-for="(item, index) in coverFileList"
+                v-for="item in coverFileList"
                 :key="item.fileId"
                 class="el-upload-list__item is-success animated"
               >

@@ -8,7 +8,7 @@ const routeUrls = [
     component: "layout",
     redirect: "/home",
     meta: {
-      title: "首页", // 做面包屑不要数组第一个
+      title: "首页",
     },
     children: [
       {
@@ -31,12 +31,10 @@ const routeUrls = [
           {
             path: "gisBai",
             name: "gisBai",
-            // component: 'gisBai', //父级不带component
             meta: {
               title: "百度地图",
               parentPath: "/gis",
             },
-            // 三级路由
             children: [
               {
                 path: "marker",
@@ -61,12 +59,10 @@ const routeUrls = [
           {
             path: "gisGao",
             name: "gisGao",
-            // component: 'gisBai',
             meta: {
               title: "高德地图",
               parentPath: "/gis",
             },
-            // 三级路由
             children: [
               {
                 path: "gisGao1",
@@ -148,39 +144,11 @@ const routeUrls = [
           },
         ],
       },
-      // {
-      //   path: "/sys",
-      //   name: "sys",
-      //   meta: {
-      //     title: "系统管理",
-      //     icon:'setting'
-      //   },
-      //   children: [
-      //     {
-      //       path: "menuManagement",
-      //       name: "menuManagement",
-      //       component: 'menuManagement',
-      //       meta: {
-      //         title: "菜单管理",
-      //         parentPath:'/sys'
-
-      //       },
-      //     },
-      //   ],
-      // },
     ],
   },
 ]
 
 // 递归匹配对应路由文件
-function initRoute(routerList) {
-  return routerList.map((e) => {
-    e.component = routesComponents[e.component] || ""
-    if (e.children) {
-      initRoute(e.children)
-    }
-    return e
-  })
-}
 
-export default initRoute(routeUrls)
+
+export default routeUrls

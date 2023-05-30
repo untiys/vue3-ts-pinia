@@ -117,3 +117,10 @@ a:hover {
 .anchorBL {
   display: none;
 }
+
+.amap-logo {
+  display: none !important;
+}
+.amap-copyright {
+  visibility: hidden !important;
+}
