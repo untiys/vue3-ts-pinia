@@ -11,15 +11,8 @@
 
 <script lang="ts">
 import { ref, reactive, defineComponent, onMounted } from "vue"
-import zaiH from "@/assets/image/zaix.png"
-import zaiAn from "@/assets/image/zaix-an.png"
-import guH from "@/assets/image/guz.png"
-import guAn from "@/assets/image/guz-an.png"
-import zaiX from "@/assets/image/zaix_icon.png"
 import zaiXH from "@/assets/image/zaix_h.png"
-import guZ from "@/assets/image/guz_icon.png"
 import guZH from "@/assets/image/guz_h.png"
-
 import Card from "@/components/Card.vue"
 export default defineComponent({
   components: {
@@ -53,7 +46,7 @@ export default defineComponent({
 
     let markers = <any>[]
     const init = () => {
-      map1 = new AMap.Map("gaode-map", {
+      map1 = new window.AMap.Map("gaode-map", {
         viewMode: "3D", // 默认使用 2D 模式
         mapStyle: "amap://styles/5e813ad8960c9c33572ac55f90e73f01",
         zoom: 17, //初始化地图层级
@@ -72,7 +65,7 @@ export default defineComponent({
     }
     const markerInit = (data: param) => {
       const { list, type, deviceCode, index } = data
-      let Amap = AMap
+      let Amap = window.AMap
       map1.remove(markers) //删除所有点
       markers = []
       //   循环打点

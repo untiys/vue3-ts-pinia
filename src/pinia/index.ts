@@ -85,6 +85,15 @@ export const useStore = defineStore("main", {
                         parentPath: "/gis/gisGao",
                       },
                     },
+                    {
+                      path: "markers",
+                      name: "markers",
+                      component: "gaoDeMarkers",
+                      meta: {
+                        title: "点聚合",
+                        parentPath: "/gis/gisGao",
+                      },
+                    },
                   ],
                 },
               ],

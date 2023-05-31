@@ -3,6 +3,7 @@ export default {
   home: () => import("../views/home/index.vue"),
   gisBai: () => import("../views/gis/BaiDu/marker.vue"),
   gaoDeMarker: () => import("../views/gis/GaoDe/marker.vue"),
+  gaoDeMarkers: () => import('../views/gis/GaoDe/markers.vue'),
   menuManagement: () => import("../views/sys/menuManagement/index.vue"),
   baiBoundary: () => import("../views/gis/BaiDu/boundary.vue"),
 

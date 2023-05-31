@@ -9,6 +9,7 @@ declare module "*.vue" {
 
 declare interface Window {
   BMapGL: any
+  AMap: any
 }
 
 declare interface HTMLElement {

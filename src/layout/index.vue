@@ -56,7 +56,7 @@
 import { ref, defineComponent, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import menuItem from "../components/CeShi.vue"
-import routeI from "../router/routes"
+import { useStore } from "@/pinia"
 export default defineComponent({
   components: {
     menuItem,
@@ -70,11 +70,12 @@ export default defineComponent({
 
     const route = useRoute()
     const router = useRouter()
+    const store = useStore()
 
     let isCollapse = ref<boolean>(false)
     const breadcrumb = ref([])
     const defaultActive = ref<string>()
-    const menuList = ref(routeI[0].children)
+    const menuList = ref(store.routes[0].children)
 
     // 导航栏遍历
     let tabs = ref<Tabs[]>([{ path: "/home", active: true, name: "工作台" }])
