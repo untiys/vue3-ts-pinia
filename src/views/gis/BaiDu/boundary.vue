@@ -42,7 +42,6 @@ export default defineComponent({
       // 创建行政区域搜索的对象实例
 
       boundary("周口市", "green")
-      boundary("郑州市", "red")
     }
 
     const boundary = (name, color) => {
@@ -76,6 +75,54 @@ export default defineComponent({
         //调整视野，自动定位到当前区域，否则需要设置地图中心点
         map.setViewport(pointArray)
       })
+    }
+
+
+
+
+    // 合并区域边界重叠部分
+    const mergeArea = async () => {
+      const  init1 =await (await fetch('/json/nanchang.json')).json()
+      const  init2 =await (await fetch('/json/yingtan.json')).json()
+      addGeoJSONToMap(init1)
+
+    }
+
+    const addGeoJSONToMap = (geojson)=> {
+      let map1 = new Bmap.Map("boundary2")
+      map1.centerAndZoom(new Bmap.Point(122.393343, 30.002009), 13)
+      map1.enableScrollWheelZoom(true)
+      const features = geojson.features;
+      features.forEach((feature) => {
+      const geometry = feature.geometry;
+      let overlay;
+      if (geometry.type === "Polygon") {
+        const points = geometry.coordinates[0].map((coord) => {
+          // const points = this.convertPoint(coord);
+          return new Bmap.Point(coord[0], coord[1]);
+        });
+        overlay = new Bmap.Polygon(points);
+      } else if (geometry.type === "MultiPolygon") {
+        let arr =[]
+        geometry.coordinates.forEach((polygonCoords) => {
+
+          const points = polygonCoords[0].map((ring) => {
+            arr.push(new Bmap.Point(ring[0], ring[1]))
+              // return new Bmap.Point(ring[0], ring[1]); // 创建点
+          });
+
+        });
+        overlay = new Bmap.Polygon(arr,{
+          strokeWeight: 1,
+          fillColor: "#00F5FF",
+          fillOpacity: "0.2",
+          strokeColor: "#ff0000",
+        });
+        map1.addOverlay(overlay);
+
+      }
+      });
+
     }
 
     // 根据经纬度定位边界
@@ -145,52 +192,11 @@ export default defineComponent({
 
     onMounted(() => {
       initBoundary1()
-      initBoundary2()
+      // initBoundary2()
+      mergeArea()
     })
 
-    documentText1.value = `
-    //基础代码介绍在打点页面
-      let Bmap = window.BMapGL
-      let map = new Bmap.Map("boundary1")
-      map.centerAndZoom(new Bmap.Point(120.20279, 30.260896), 13)
-      map.enableScrollWheelZoom(true)
-      map.setZoom(18)
-
-      const boundary = (name, color) => {
-        let bdary = new Bmap.Boundary()
-        //获取行政区域边界rs
-        bdary.get(name, function (rs) {
-          //清除地图覆盖物
-          // map.clearOverlays()
-
-          //行政区域的点有多少个
-          var count = rs.boundaries.length
-          if (count === 0) {
-            alert("未能获取当前输入行政区域")
-            return
-          }
-          var pointArray = []
-
-          for (var i = 0; i < count; i++) {
-            //建立多边形覆盖物样式
-            var ply = new Bmap.Polygon(rs.boundaries[i], {
-              strokeWeight: 4,
-              fillColor: color,
-              fillOpacity: "0.2",
-              strokeColor: "#ff0000",
-            })
-            //添加覆盖物
-            map.addOverlay(ply)
-            pointArray = pointArray.concat(ply.getPath())
-          }
-
-          //调整视野，自动定位到当前区域，否则需要设置地图中心点
-          map.setViewport(pointArray)
-      })
-    }
-
-    
-      `
+    // documentText1.value = ``
 
     documentText2.value = `
       let map1 = new Bmap.Map("boundary2")
@@ -261,6 +267,7 @@ export default defineComponent({
       documentText2,
       initBoundary1,
       initBoundary2,
+      mergeArea
     }
   },
 })

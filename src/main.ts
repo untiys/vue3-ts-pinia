@@ -9,10 +9,10 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue"
 import codehight from "./utils/codeHight.js"
 import "prismjs/themes/prism.css"
 import { createPinia } from "pinia"
-
+import '@/assets/css/DrawingManager.css'
 const store = createPinia()
 const app = createApp(App)
-
+import ''
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }

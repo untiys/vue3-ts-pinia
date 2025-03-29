@@ -66,6 +66,15 @@ export const useStore = defineStore("main", {
                         parentPath: "/gis/gisBai",
                       },
                     },
+                    {
+                      path: "drawer",
+                      name: "drawer",
+                      component: "baiDrawer",
+                      meta: {
+                        title: "区域绘制",
+                        parentPath: "/gis/gisBai",
+                      },
+                    },
                   ],
                 },
                 {

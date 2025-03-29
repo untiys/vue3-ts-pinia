@@ -1,4 +1,4 @@
-import routesComponents from "./routesComponents"
+
 
 // 以下都是由接口返回回来的动态路由,和路由文件进行匹配，合并到总路由里面
 const routeUrls = [
@@ -51,6 +51,15 @@ const routeUrls = [
                 component: "baiBoundary",
                 meta: {
                   title: "边界",
+                  parentPath: "/gis/gisBai",
+                },
+              },
+              {
+                path: "drawer",
+                name: "drawer",
+                component: "baiDrawer",
+                meta: {
+                  title: "区域绘制",
                   parentPath: "/gis/gisBai",
                 },
               },
