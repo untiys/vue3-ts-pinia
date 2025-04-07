@@ -27,6 +27,7 @@ export default defineConfig({
         // rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
+
   },
   //引入jsx写法
   plugins: [vue(),vueJsx(),prismjs({

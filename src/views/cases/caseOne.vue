@@ -37,6 +37,9 @@
         </template>
         <template #title>拖拽上传(上传只写了样式)</template>
       </Card>
+      <div style="margin: 20px 0px">
+        <el-button type="primary" @click="exportFile">前端导出xls文件</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -44,6 +47,7 @@
 <script lang="ts">
 import { ref, reactive, defineComponent, onMounted } from "vue"
 import Card from "@/components/Card.vue"
+import { exportExcelWithHeader} from "@/utils/export/exportFile.js"
 // import draggable from "vuedraggable"
 import { VueDraggableNext } from "vue-draggable-next"
 import { getAssetsImages } from "@/utils/getAssetsImages.js"
@@ -71,6 +75,39 @@ export default defineComponent({
         url: getAssetsImages("guz-an.png"),
       },
     ])
+// 示例数据
+    const tableData = ref([
+      { id: 1, name: '张三', age: 25, department: '技术部' },
+      { id: 2, name: '李四', age: 30, department: '市场部' },
+      { id: 3, name: '王五', age: 28, department: '财务部' }
+    ])
+
+// 带表头的列配置
+    const columns = [
+      { key: 'id', title: '员工ID' },
+      { key: 'name', title: '姓名' },
+      { key: 'age', title: '年龄' },
+      { key: 'department', title: '部门' }
+    ]
+    const formatJson = (tValue,dataList)=>{
+        return  dataList.map((e)=>{
+          return  tValue.map((item)=>{
+            return e[item]
+          })
+        })
+    }
+
+    const  exportFile = ()=>{
+      let tHead = []
+      let tValue = []
+      columns.map((item)=>{
+        tHead.push(item.title)
+        tValue.push(item.key)
+      })
+      const  content = formatJson(tValue,tableData.value)
+      exportExcelWithHeader(tHead, content, '员工数据（带表头）.xlsx')
+    }
+
 
     documentText.value = `
         vue2用法：import draggable from "vuedraggable"
@@ -117,6 +154,7 @@ export default defineComponent({
     return {
       coverFileList,
       documentText,
+      exportFile
     }
   },
 })

@@ -12,7 +12,6 @@ import { createPinia } from "pinia"
 import '@/assets/css/DrawingManager.css'
 const store = createPinia()
 const app = createApp(App)
-import ''
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
